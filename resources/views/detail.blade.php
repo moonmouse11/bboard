@@ -8,5 +8,7 @@
     <b>{{ $bb->price }}</b>
     <div>{{ $bb->content }}</div>
     <br>
+    <p>Автор: {{ $bb->user->name }}</p>
+    <br>
     <a href="{{ route('index') }}">Return to main page</a>
 @endsection

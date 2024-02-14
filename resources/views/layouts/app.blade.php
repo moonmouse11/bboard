@@ -8,7 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="my-3 text-center">Bill</h1>
+        <nav class="navbar navbar-light">
+            <div class="cintainer-fluid">
+                <a href="{{ route('index') }}" class="navbar-brand me-auto">Main page</a>
+                <a href="{{ route('register') }}" class="nav-item nav-link">Registration</a>
+                <a href="{{ route('login') }}" class="nav-item nav-link">Entance</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link">My bills</a>
+                <a href="{{ route('logout') }}" class="nav-item nav-link">Logout</a>
+            </div>
+        </nav>
+        <h1 class="my-3 text-center">Bills</h1>
         @yield('content')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
