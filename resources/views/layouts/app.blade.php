@@ -9,12 +9,15 @@
 <body>
     <div class="container">
         <nav class="navbar navbar-light">
-            <div class="cintainer-fluid">
+            <div class="container-fluid">
                 <a href="{{ route('index') }}" class="navbar-brand me-auto">Main page</a>
                 <a href="{{ route('register') }}" class="nav-item nav-link">Registration</a>
                 <a href="{{ route('login') }}" class="nav-item nav-link">Entance</a>
                 <a href="{{ route('home') }}" class="nav-item nav-link">My bills</a>
-                <a href="{{ route('logout') }}" class="nav-item nav-link">Logout</a>
+                <form action="{{ route('logout') }}" method="POST" class="form-inline">
+                    @csrf
+                    <input type="submit" class="btn btn-danger" value="Logout">
+                </form>
             </div>
         </nav>
         <h1 class="my-3 text-center">Bills</h1>
