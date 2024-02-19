@@ -11,13 +11,17 @@
         <nav class="navbar navbar-light">
             <div class="container-fluid">
                 <a href="{{ route('index') }}" class="navbar-brand me-auto">Main page</a>
+                @guest
                 <a href="{{ route('register') }}" class="nav-item nav-link">Registration</a>
                 <a href="{{ route('login') }}" class="nav-item nav-link">Entance</a>
+                @endguest
+                @auth
                 <a href="{{ route('home') }}" class="nav-item nav-link">My bills</a>
                 <form action="{{ route('logout') }}" method="POST" class="form-inline">
                     @csrf
                     <input type="submit" class="btn btn-danger" value="Logout">
                 </form>
+                @endauth
             </div>
         </nav>
         <h1 class="my-3 text-center">Bills</h1>

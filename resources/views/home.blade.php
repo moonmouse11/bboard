@@ -3,6 +3,7 @@
 @section('title', 'My Bills')
 
 @section('content')
+<h2>Hi {{ Auth::user()->name }}</h2>
 <p class="text-end"><a href="{{ route('bb.create') }}">Add bill</a></p>
 @if (count($bbs) > 0)
 <table class="table table-striped table-borderless">
