@@ -14,6 +14,8 @@ class HomeController extends Controller
         'title' => 'required|max:50',
         'content' => 'required',
         'price' => 'required|numeric',
+        'category' => 'required|max:50',
+        'type' => ''
     ];
 
     /**
