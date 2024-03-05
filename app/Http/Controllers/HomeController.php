@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Bb;
@@ -11,7 +13,7 @@ class HomeController extends Controller
     private const BB_VALIDATOR = [
         'title' => 'required|max:50',
         'content' => 'required',
-        'price' => 'required|numeric'
+        'price' => 'required|numeric',
     ];
 
     /**
@@ -27,9 +29,9 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         return view('home',
             ['bbs' => Auth::user()->bbs()->latest()->get()]);
@@ -40,7 +42,7 @@ class HomeController extends Controller
         return view('bb-create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate(self::BB_VALIDATOR);
         Auth::user()->bbs()->create([

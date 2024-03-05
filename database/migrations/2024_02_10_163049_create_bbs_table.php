@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('content');
             $table->float('price');
             $table->foreignId('user_id')->constrained()
-                ->onDelete('cascade');
+                ->onDelete('restrict');
             $table->timestamps();
             $table->softDeletes();
             $table->index('created_at');
