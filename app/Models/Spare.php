@@ -14,7 +14,8 @@ class Spare extends Model
 
     public function machines(): BelongsToMany
     {
-        return $this->belongsToMany(Machine::class);
+        return $this->belongsToMany(Machine::class)->as('connector')
+            ->withPivot('some_very_important_info')->withTimestamps();
     }
 
 }
