@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->string('title', 50)->primary();
             $table->text('description');
+            $table->bigInteger('parent_id');
+            $table->foreign('parent_id')->references('id')
+                ->on('categories')->restrictOnDelete();
             $table->timestamps();
         });
 
