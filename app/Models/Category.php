@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,5 +40,13 @@ class Category extends Model
     public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    protected function fullName()
+    {
+        return Attribute::make(
+            get: fn ($value) => ($this->parent()) ?
+                $this->parent()->name . ' - ' . $this->name : $this->name
+        );
     }
 }
