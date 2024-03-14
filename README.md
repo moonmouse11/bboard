@@ -10,4 +10,5 @@ Progress:
 3. Third chapter done. Config work.
 4. Four chapters complete. Many docs work.
 5. End chapter №5.
-6. 
+6. Six chapters closed
+7. 
