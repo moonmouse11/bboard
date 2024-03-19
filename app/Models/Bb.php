@@ -19,6 +19,8 @@ class Bb extends Model
     protected $fillable = ['title', 'content', 'price', 'user_id', 'type', 'category'];
     protected $casts = ['type' => BBType::class];
 
+    public string $someProperty;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
