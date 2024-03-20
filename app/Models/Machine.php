@@ -12,6 +12,13 @@ class Machine extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
+    /**
+     * Retrieves the spares associated with pivot object.
+     *
+     * @return BelongsToMany The spares associated with this object.
+     */
     public function spares(): BelongsToMany
     {
         return $this->belongsToMany(Spare::class)->as('connector')

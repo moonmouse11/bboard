@@ -36,7 +36,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
+    /**k
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -45,22 +45,46 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
+    /**
+     * Return all bb of the user
+     *
+     * @return HasMany
+     */
     public function bbs(): HasMany
     {
         return $this->hasMany(Bb::class);
     }
 
+    /**
+     * Function to return the account
+     *
+     * @return HasOne
+     */
     public function account(): HasOne
     {
         return $this->hasOne(Account::class);
     }
 
+    /**
+     * Return the name of the user
+     *
+     * @return Attribute
+     */
     protected function name(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
+    }
+
+    /**
+     * Return all spares of the user
+     *
+     * @return HasMany
+     */
+    public function spares(): HasMany
+    {
+        return $this->hasMany(Spare::class);
     }
 }

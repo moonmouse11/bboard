@@ -16,6 +16,8 @@ class Category extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected mixed $name;
+
     public function bbs(): HasMany
     {
         return $this->hasMany(Bb::class, 'category', 'title');
@@ -32,20 +34,35 @@ class Category extends Model
         return $this->hasManyThrough(Offer::class, Bb::class);
     }
 
+    /**
+     * Return slave categories.
+     *
+     * @return HasMany
+     */
     public function categories(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id');
     }
 
+    /**
+     * Return the parent category
+     *
+     * @return BelongsTo
+     */
     public function parent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
     }
 
-    protected function fullName()
+    /**
+     * Return the full name of the category with parent categories.
+     *
+     * @return Attribute
+     */
+    protected function fullName(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => ($this->parent()) ?
+            get: fn($value) => ($this->parent()) ?
                 $this->parent()->name . ' - ' . $this->name : $this->name
         );
     }

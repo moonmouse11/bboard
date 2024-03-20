@@ -9,10 +9,10 @@ use App\Models\Bb;
 
 class BbsController extends Controller
 {
-    public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(): string
     {
-        $context = ['bbs' => Bb::latest()->get()];
-        return view('index', $context);
+//        $context = ['bbs' => Bb::latest()->get()];
+        return 'Controller work';
     }
 
     public function detail(Bb $bb): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
