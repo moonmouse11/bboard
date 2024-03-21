@@ -16,14 +16,16 @@ class Spare extends Model
     protected $guarded = [];
 
     /**
-     * Retrieve the machines associated with the model.
+     * Fetch the machines associated with the model.
      *
      * @return BelongsToMany
      */
     public function machines(): BelongsToMany
     {
-        return $this->belongsToMany(Machine::class)->as('connector')
-            ->withPivot('some_very_important_info')->withTimestamps();
+        return $this->belongsToMany(Machine::class)
+            ->as('connector')
+            ->withPivot('important_info')
+            ->withTimestamps();
     }
 
     /**

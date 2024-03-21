@@ -28,4 +28,4 @@ Route::patch('/home/{bb}', [HomeController::class, 'update'])->name('bb.update')
 Route::get('/home/{bb}/delete', [HomeController::class, 'delete'])->name('bb.delete')->middleware('can:destroy.bb');
 Route::delete('home/{bb}', [HomeController::class, 'destroy'])->name('bb.destroy')->middleware('can:destroy.bb');
 
-Route::get('/{bb}', [BbsController::class, 'detail'])->name('detail');
+Route::get('/{bb}', [BbsController::class, 'showDetail'])->name('detail');
