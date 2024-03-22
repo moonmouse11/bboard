@@ -21,11 +21,21 @@ class Bb extends Model
 
     public string $someProperty;
 
+    /**
+     * Retrieve the associated user for the bboard.
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Returns the category that bboard belongs to.
+     *
+     * @return BelongsTo
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category', 'title');

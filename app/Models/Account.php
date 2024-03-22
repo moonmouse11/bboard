@@ -12,6 +12,11 @@ class Account extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * Returns the user that belongs to this account.
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
