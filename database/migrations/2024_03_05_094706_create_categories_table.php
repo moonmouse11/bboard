@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('categories', static function (Blueprint $table) {
             $table->string('title', 50)->primary();
             $table->text('description');
             $table->bigInteger('parent_id');
@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('bbs', function (Blueprint $table) {
+        Schema::table('bbs', static function (Blueprint $table) {
             $table->string('category', 50);
             $table->foreign('category')->references('title')
                 ->on('categories')->cascadeOnDelete();
@@ -31,7 +31,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('bbs', function (Blueprint $table) {
+        Schema::table('bbs', static function (Blueprint $table) {
             $table->dropColumn('category');
         });
         Schema::dropIfExists('categories');

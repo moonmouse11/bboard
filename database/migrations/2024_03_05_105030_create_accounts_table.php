@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create('accounts', static function (Blueprint $table) {
             $table->string('email')->primary();
             $table->json('socials');
             $table->foreignId('user_id')->constrained()
@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users', static function (Blueprint $table) {
             $table->string('accounts')->unique();
         });
     }
@@ -28,7 +28,7 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users', static function (Blueprint $table) {
             $table->dropIndex('users_accounts_unique');
             $table->dropColumn('accounts');
         });

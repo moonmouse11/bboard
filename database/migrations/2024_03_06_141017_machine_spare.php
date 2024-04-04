@@ -10,14 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('machines', function (Blueprint $table) {
+        Schema::create('machines', static function (Blueprint $table) {
             $table->id();
             $table->string('title', 30);
             $table->uuid();
             $table->timestamps();
         });
 
-        Schema::create('spares', function (Blueprint $table) {
+        Schema::create('spares', static function (Blueprint $table) {
             $table->id();
             $table->string('title', 30);
             $table->uuid();

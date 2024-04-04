@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('offer', function (Blueprint $table) {
+        Schema::create('offer', static function (Blueprint $table) {
             $table->id();
             $table->string('title', 40);
             $table->float('price');
