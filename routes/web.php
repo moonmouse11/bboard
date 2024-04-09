@@ -16,18 +16,20 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', static function () {
     redirect('home');
 });
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/home/create', [HomeController::class, 'create'])->name('bb.create');
-Route::post('/home', [HomeController::class, 'store'])->name('bb.store');
-Route::get('/home/{bb}/edit', [HomeController::class, 'edit'])->name('bb.edit')->middleware('can:update.bb');
-Route::patch('/home/{bb}', [HomeController::class, 'update'])->name('bb.update')->middleware('can:update.bb');
-Route::get('/home/{bb}/delete', [HomeController::class, 'delete'])->name('bb.delete')->middleware('can:destroy.bb');
-Route::delete('home/{bb}', [HomeController::class, 'destroy'])->name('bb.destroy')->middleware('can:destroy.bb');
+Route::prefix('home')->group(static function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::post('/', [HomeController::class, 'store'])->name('bb.store');
+    Route::get('create', [HomeController::class, 'create'])->name('bb.create');
+    Route::get('/{bb}/edit', [HomeController::class, 'edit'])->name('bb.edit')->middleware('can:update.bb');
+    Route::patch('{bb}', [HomeController::class, 'update'])->name('bb.update')->middleware('can:update.bb');
+    Route::get('{bb}/delete', [HomeController::class, 'delete'])->name('bb.delete')->middleware('can:destroy.bb');
+    Route::delete('/{bb}', [HomeController::class, 'destroy'])->name('bb.destroy')->middleware('can:destroy.bb');
+});
 
 Route::get('/{bb}', [BbsController::class, 'showDetail'])->name('detail');
