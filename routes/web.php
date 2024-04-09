@@ -16,7 +16,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [BbsController::class, 'index'])->name('index');
+Route::get('/', function () {
+    redirect('home');
+});
 
 Auth::routes();
 

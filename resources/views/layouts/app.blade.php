@@ -10,7 +10,7 @@
     <div class="container">
         <nav class="navbar navbar-light">
             <div class="container-fluid">
-                <a href="{{ route('index') }}" class="navbar-brand me-auto">Main page</a>
+                <a href="{{ route('home') }}" class="navbar-brand me-auto">Main page</a>
                 @guest
                 <a href="{{ route('register') }}" class="nav-item nav-link">Registration</a>
                 <a href="{{ route('login') }}" class="nav-item nav-link">Entance</a>
