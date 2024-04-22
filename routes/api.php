@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\JWTController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
-    Route::get('jwt', function () {
-        return response('jwt here', 200);
+    Route::prefix('jwt')->group(function () {
+        Route::post('token', [JWTController::class, 'token']);
+        Route::post('refresh', [JWTController::class, 'refresh']);
+        Route::post('logout', [JWTController::class, 'logout']);
     });
 });
 
