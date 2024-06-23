@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
+use App\Models\Posts\Bb;
+use App\Models\Posts\Details\Spare;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
