@@ -16,13 +16,11 @@ final class Bb extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $primaryKey = 'title';
-    protected $keyType = 'string';
-    public $incrementing = false;
-    protected $fillable = ['title', 'content', 'price', 'user_id', 'type', 'category'];
-    protected $casts = ['type' => BBType::class];
-
-    public string $someProperty;
+    protected string $primaryKey = 'title';
+    protected string $keyType = 'string';
+    public bool $incrementing = false;
+    protected array $fillable = ['title', 'content', 'price', 'user_id', 'type', 'category'];
+    protected array $casts = ['type' => BBType::class];
 
     /**
      * Retrieve the associated user for the bboard.
