@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Posts;
 
 use App\Models\Posts\Details\Spare;
@@ -10,12 +12,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Offer extends Model
+final class Offer extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $guarded = [];
+    protected array $guarded = [];
 
     /**
      * Retrieve the associated user for the offer.

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+final class Category extends Model
 {
     use HasFactory;
     use SoftDeletes;
