@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\App\BbsController;
 use App\Http\Controllers\App\HomeController;
 use Illuminate\Support\Facades\Auth;
